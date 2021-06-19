@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+            <img src="{{doctor.img.url}}"width="400" height="600">
+        </div>
+        <div class="col-md-6">
+            <h2>{{doctor.name}}</h2>
+            <h4>{{doctor.spec}}</h4>
+            <br>
+            <br>
+            <h5>{{doctor.desc}}</h5>
+            <br>
+            <br>
+            <h5>{{doctor.phnno}}</h5>
+            <h5>{{doctor.mail}}</h5>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

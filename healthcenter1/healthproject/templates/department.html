@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+   {% if department %}
+     <div class="row my_row_class">
+         <div class="mx_auto">
+             <p><a href="{% url 'healthapp:allDocList' %}">Our Doctors</a></p>
+         </div>
+     </div>
+   {% endif %}
+      <div class="mx-auto">
+          {% if department %}
+          <img class="img-responsive" width="1400" height="500" src="{{department.img.url}}" alt="{{department.name}}">
+      </div>
+      <br>
+      <div>
+          <h1 class="text-center my_title">{{department.name}}</h1>
+          <p class="text-justify">{{department.desc}}</p>
+      </div>
+          {% else %}
+      <div>
+      <img class="img-responsive" width="1400" height="500" src="{% static 'images/mufid-majnun-Ei46GUcG_y4-unsplash.jpg' %}"  alt="Our Doctors">
+      </div>
+      <br>
+      <div>
+          <h1 class="text-center my_title">Our Doctors In All Departments</h1>
+          <p class="text-justify">Doctors, also known as Physicians, are licensed health professionals who maintain and
+              restore human health through the practice of medicine. They examine patients, review
+              their medical history, diagnose illnesses or injuries, administer treatment, and counsel
+              patients on their health and well being.</p>
+      </div>
+          {% endif %}
+     <div class="container">
+         <div class="row mx-auto">
+         {% for doclist in doctorlist %}
+         <div class="my_bottom_margin col-9 col-sm-12 col-md-4 col-lg-4">
+             <div class="cardtext-center" style="min-width:18rem">
+                 <a href="{{doclist.get_url}}"><img class="card-img-top my_image" src="{{doclist.img.url}}"   alt="{{doclist.name}}"></a>
+             </div>
+             <div  class="card-body">
+             <h4>{{doclist.name}}</h4>
+             <p>{{doclist.department}}</p>
+             </div>
+         </div>
+             {% endfor %}
+     </div>
+     </div>
+
+{% endblock %}
